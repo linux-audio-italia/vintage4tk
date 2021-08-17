@@ -1,0 +1,32 @@
+[
+  {
+    "model": "recorders.brand",
+    "pk": 1,
+    "fields": {
+      "name": "yamaha",
+      "slug": "yamaha",
+      "created_at": "2021-08-17T14:46:30.529Z",
+      "updated_at": "2021-08-17T14:46:30.529Z"
+    }
+  },
+  {
+    "model": "recorders.brand",
+    "pk": 2,
+    "fields": {
+      "name": "fostex",
+      "slug": "fostex",
+      "created_at": "2021-08-17T14:46:35.136Z",
+      "updated_at": "2021-08-17T14:46:35.136Z"
+    }
+  },
+  {
+    "model": "recorders.brand",
+    "pk": 3,
+    "fields": {
+      "name": "tascam",
+      "slug": "tascam",
+      "created_at": "2021-08-17T14:46:38.523Z",
+      "updated_at": "2021-08-17T14:46:38.523Z"
+    }
+  }
+]

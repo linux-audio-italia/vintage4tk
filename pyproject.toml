@@ -1,0 +1,5 @@
+[tool.black]
+line-length = 119
+
+[tool.coverage]
+run.omit = ["./venv/*", "manage.py", "./apps/*/tests.py"]

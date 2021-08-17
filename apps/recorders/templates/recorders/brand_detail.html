@@ -1,0 +1,11 @@
+<h1>{{ brand }}</h1>
+
+<ul>
+    {% for recorder in brand.recorder_set.all %}
+        <li>
+            <a href="{% url 'recorder-detail' recorder.brand recorder.slug %}">
+                {{ recorder.model }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
