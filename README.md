@@ -2,6 +2,8 @@
 
 A website to collect vintage 4 tracks cassette recorders.
 
+![example workflow](https://github.com/carlotm/vintage4tk/actions/workflows/CI.yml/badge.svg)
+
 ## Local development setup
 
 1. Copy and customize Django settings (especially https://docs.djangoproject.com/en/3.2/ref/settings/#databases)
