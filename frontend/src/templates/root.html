@@ -7,7 +7,7 @@
     <link href="{% static 'common.css' %}" rel="stylesheet" rel="preload" as="style">
 </head>
 <body>
-    <header></header>
+    {% include "includes/header.html" %}
     <main>
         {% block main %}{% endblock main %}
     </main>
