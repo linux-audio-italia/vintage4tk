@@ -34,7 +34,20 @@ $ python manage.py migrate
 $ python manage.py loaddata users brands recorders
 ```
 
-5. Run the development server
+5. Install the node dependencies and compile the css
+
+```
+$ npm install
+$ npm run css
+```
+
+In development, if you want to watch for css changes and recompile, use:
+
+```
+$ npm run css:watch
+```
+
+6. Run the development server
 
 ```
 $ python manage.py runserver
