@@ -13,12 +13,13 @@ $ cp vintage4tk/settings/ci.py vintage4tk/settings/local.py
 $ $EDITOR vintage4tk/settings/local.py
 ```
 
-2. Create a virtualenv and install the requirements
+2. Create a virtualenv and install the python and node requirements
 
 ```
 $ python -m venv venv
 $ . ./venv/bin/activate
 $ pip install -r requirements.txt
+$ npm install
 ```
 
 3. Create the database and migrate the schema
@@ -34,23 +35,10 @@ $ python manage.py migrate
 $ python manage.py loaddata users brands recorders
 ```
 
-5. Install the node dependencies and compile the css
+5. Run the development server and css compilation
 
 ```
-$ npm install
-$ npm run css
-```
-
-In development, if you want to watch for css changes and recompile, use:
-
-```
-$ npm run css:watch
-```
-
-6. Run the development server
-
-```
-$ python manage.py runserver
+$ supervisord
 ```
 
 The admin username and password are **admin** / **adminadmin**.
