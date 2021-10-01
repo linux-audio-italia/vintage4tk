@@ -1,8 +1,9 @@
-from django.db.utils import DataError
-from apps.recorders.models import Brand, Recorder
-from django.test import TestCase
 from django.db import IntegrityError
+from django.db.utils import DataError
+from django.test import TestCase
 from django.urls import reverse
+
+from apps.recorders.models import Brand, Recorder
 
 
 class TestCaseBrandModel(TestCase):
