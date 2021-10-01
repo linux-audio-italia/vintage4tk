@@ -1,0 +1,36 @@
+{
+  "name": "vintage4tk",
+  "version": "1.0.0",
+  "description": "A website to collect vintage 4 tracks cassette recorders.",
+  "main": "index.js",
+  "scripts": {
+    "css": "postcss frontend/src/css/*.css --dir frontend/dist",
+    "css:watch": "postcss --verbose --watch frontend/src/css/*.css --dir frontend/dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlotm/vintage4tk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carlotm/vintage4tk/issues"
+  },
+  "homepage": "https://github.com/carlotm/vintage4tk#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.3.6",
+    "postcss": "^8.3.8",
+    "postcss-cli": "^9.0.1",
+    "postcss-import": "^14.0.2",
+    "tailwindcss": "^2.2.16"
+  },
+  "postcss": {
+    "plugins": {
+      "postcss-import": {},
+      "tailwindcss": {},
+      "autoprefixer": {}
+    }
+  }
+}
