@@ -1,5 +1,6 @@
-from apps.recorders.models import Brand, Recorder
 from django.contrib import admin
+
+from apps.recorders.models import Brand, Recorder
 
 
 @admin.register(Brand)

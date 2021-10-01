@@ -1,5 +1,6 @@
-from .models import Brand, Recorder
 from django.views.generic import DetailView, ListView
+
+from .models import Brand, Recorder
 
 
 class BrandListView(ListView):

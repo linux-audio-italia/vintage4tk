@@ -34,6 +34,8 @@ jobs:
       run: flake8
     - name: Lint with Black
       run: python -m black --check --diff manage.py vintage4tk apps
+    - name: Lint with isort
+      run: python -m isort --check-only --diff manage.py vintage4tk apps
     - name: Coverage report
       env:
         DJANGO_SETTINGS_MODULE: vintage4tk.settings.ci
