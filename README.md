@@ -41,8 +41,9 @@ $ python manage.py loaddata users brands recorders
 $ supervisord
 ```
 
-The admin username and password are **admin** / **adminadmin**.
-
 Visit the website at http://127.0.0.1:8000
 and the admin interface at http://127.0.0.1:8000/admin
+
+The admin username and password are **admin** / **adminadmin**.
+
 
