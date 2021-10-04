@@ -1,5 +1,7 @@
+from django.conf import settings
 from django.db import IntegrityError
 from django.db.utils import DataError
+from django.templatetags.static import static
 from django.test import TestCase
 from django.urls import reverse
 
@@ -29,6 +31,14 @@ class TestCaseBrandModel(TestCase):
 
         with self.assertRaisesRegexp(DataError, "value too long for type character varying"):
             Brand.objects.create(name="x" * 101)
+
+    def test_brand_picture_returns_the_static_url_of_the_png_named_like_the_slug(self):
+        yamaha = Brand.objects.create(name="yamaha")
+        self.assertEqual(yamaha.picture, static("brand_logos/yamaha.png"))
+
+    def test_brand_picture_returns_the_fallback_image_if_static_image_is_missing(self):
+        dummy_brand = Brand.objects.create(name="dummy")
+        self.assertEqual(dummy_brand.picture, static(settings.FALLBACK_BRAND_PICTURE))
 
 
 class TestCaseRecorderModel(TestCase):

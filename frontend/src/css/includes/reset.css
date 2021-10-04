@@ -119,6 +119,23 @@ table {
   border-spacing: 0;
 }
 
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
 * {
   box-sizing: border-box;
 }

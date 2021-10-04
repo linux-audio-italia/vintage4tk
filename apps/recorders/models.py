@@ -1,5 +1,10 @@
+from os.path import join as pathjoin
+
 from autoslug import AutoSlugField
+from django.conf import settings
+from django.contrib.staticfiles import finders
 from django.db import models
+from django.templatetags.static import static
 
 
 class Brand(models.Model):
@@ -10,6 +15,12 @@ class Brand(models.Model):
 
     def __str__(self):
         return self.name
+
+    @property
+    def picture(self):
+        path = pathjoin("brand_logos", f"{self.slug}.png")
+        pic = path if finders.find(path) else settings.FALLBACK_BRAND_PICTURE
+        return static(pic)
 
     class Meta:
         verbose_name_plural = "Brands"
