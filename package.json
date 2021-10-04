@@ -7,7 +7,10 @@
     "css": "postcss frontend/src/css/*.css --dir frontend/dist",
     "css:watch": "postcss --verbose --watch frontend/src/css/*.css --dir frontend/dist",
     "css:lint": "stylelint frontend/src/**/*.css",
+    "html:lint": "djlint frontend/src/templates/ apps/*/templates/",
+    "python:lint": "flake8 && python -m black --check --diff manage.py vintage4tk apps && python -m isort --check-only --diff manage.py vintage4tk apps",
     "images": "find frontend/src/images/ -type f | while read image ; do out=$(dirname $image | sed -e 's|src/images|dist|'); imagemin $image -o $out ; done",
+    "lint": "npm run css:lint && npm run html:lint && npm run python:lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

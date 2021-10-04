@@ -33,16 +33,8 @@ jobs:
         npm install
     - name: Optimize images
       run: npm run images
-    - name: Lint with Flake8
-      run: flake8
-    - name: Lint with Black
-      run: python -m black --check --diff manage.py vintage4tk apps
-    - name: Lint with isort
-      run: python -m isort --check-only --diff manage.py vintage4tk apps
-    - name: Lint templates with djlint
-      run: djlint frontend/src/templates/ apps/*/templates/
-    - name: Lint css with stylelint
-      run: npm run css:lint
+    - name: Lint
+      run: npm run lint
     - name: Coverage report
       env:
         DJANGO_SETTINGS_MODULE: vintage4tk.settings.ci
