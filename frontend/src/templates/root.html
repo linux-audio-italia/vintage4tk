@@ -1,16 +1,16 @@
 {% load static %}
 <!doctype html>
 <html>
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="{% static 'common.css' %}" rel="stylesheet" rel="preload" as="style">
-</head>
-<body>
+  </head>
+  <body>
     {% include "includes/header.html" %}
-    <main>
-        {% block main %}{% endblock main %}
+    <main class="SiteMain limit">
+      {% block main %}{% endblock main %}
     </main>
-    <footer></footer>
-</body>
+    {% include "includes/footer.html" %}
+  </body>
 </html>

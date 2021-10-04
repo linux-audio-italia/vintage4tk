@@ -1,13 +1,13 @@
 {% extends 'root.html' %}
 
 {% block main %}
-<ul>
+  <ul>
     {% for brand in brands %}
-        <li>
-            <a href="{% url 'brand-detail' brand.slug %}">
-                {{ brand.name }}
-            </a>
-        </li>
+      <li>
+        <a href="{% url 'brand-detail' brand.slug %}">
+          {{ brand.name }}
+        </a>
+      </li>
     {% endfor %}
-</ul>
+  </ul>
 {% endblock main %}

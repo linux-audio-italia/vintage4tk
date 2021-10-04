@@ -1,0 +1,12 @@
+:root {
+  --width-l: 1200px;
+
+  --black: black;
+  --white: white;
+  --hi: blue;
+
+  --air: 20px;
+  --air-l: 40px;
+
+  --border-main: 2px solid var(--black);
+}

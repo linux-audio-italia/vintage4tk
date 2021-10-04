@@ -1,15 +1,15 @@
 {% extends 'root.html' %}
 
 {% block main %}
-<h1>{{ brand }}</h1>
+  <h1>{{ brand }}</h1>
 
-<ul>
+  <ul>
     {% for recorder in brand.recorder_set.all %}
-        <li>
-            <a href="{% url 'recorder-detail' recorder.brand recorder.slug %}">
-                {{ recorder.model }}
-            </a>
-        </li>
+      <li>
+        <a href="{% url 'recorder-detail' recorder.brand recorder.slug %}">
+          {{ recorder.model }}
+        </a>
+      </li>
     {% endfor %}
-</ul>
+  </ul>
 {% endblock main %}

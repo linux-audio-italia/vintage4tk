@@ -1,0 +1,8 @@
+.limit {
+  max-width: var(--width-l);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--air);
+  padding-right: var(--air);
+}

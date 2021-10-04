@@ -1,1 +1,47 @@
+@import "./includes/variables.css";
 @import "./includes/reset.css";
+@import "./includes/utils.css";
+
+body {
+  min-height: 100vh;
+  background-color: var(--white);
+  color: var(--black);
+  line-height: 1;
+  font-size: 16px;
+}
+
+a,
+a:visited {
+  color: var(--hi);
+}
+
+.SiteHeader {
+  border-bottom: var(--border-main);
+  padding-bottom: var(--air);
+  padding-top: var(--air);
+}
+
+.SiteMain {
+  padding-bottom: var(--air-l);
+  padding-top: var(--air-l);
+}
+
+.SiteFooter {
+  border-top: var(--border-main);
+  padding-bottom: var(--air);
+  padding-top: var(--air);
+}
+
+.MainNav {
+  display: flex;
+}
+
+.MainNav-link {
+  display: block;
+  padding-bottom: var(--air);
+  padding-top: var(--air);
+}
+
+.MainNav-link--about {
+  margin-left: auto;
+}
