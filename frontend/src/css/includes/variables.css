@@ -8,5 +8,6 @@
   --air: 20px;
   --air-l: 40px;
 
+  --font-main: "Work Sans", sans-serif;
   --border-main: 2px solid var(--black);
 }
