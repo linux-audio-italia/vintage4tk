@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -100,3 +101,5 @@ STATICFILES_DIRS = [BASE_DIR / "frontend" / "dist"]
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "accounts.User"
+
+FALLBACK_BRAND_PICTURE = os.path.join("brand_logos", "placeholder.png")
