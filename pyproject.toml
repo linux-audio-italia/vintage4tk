@@ -12,3 +12,6 @@ multi_line_output = 3
 use_parentheses = true
 skip_gitignore = true
 extend_skip_glob = "apps/*/migrations/*"
+
+[tool.djlint]
+indent = 2

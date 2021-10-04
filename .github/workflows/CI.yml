@@ -36,6 +36,8 @@ jobs:
       run: python -m black --check --diff manage.py vintage4tk apps
     - name: Lint with isort
       run: python -m isort --check-only --diff manage.py vintage4tk apps
+    - name: Lint templates with djlint
+      run: djlint frontend/src/templates/ apps/*/templates/
     - name: Coverage report
       env:
         DJANGO_SETTINGS_MODULE: vintage4tk.settings.ci
