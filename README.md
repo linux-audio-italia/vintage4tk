@@ -5,6 +5,7 @@ A website to collect vintage 4 tracks cassette recorders.
 ![example workflow](https://github.com/carlotm/vintage4tk/actions/workflows/CI.yml/badge.svg)
 [![Code style: djLint](https://img.shields.io/badge/html%20style-djLint-blue.svg)](https://github.com/Riverside-Healthcare/djlint)
 [![Code style: black](https://img.shields.io/badge/python%20style-black-000000.svg)](https://github.com/psf/black)
+[![CSS style: stylelint](https://img.shields.io/badge/css%20style-stylelint-yellowgreen)](https://stylelint.io/)
 
 ## Local development setup
 
