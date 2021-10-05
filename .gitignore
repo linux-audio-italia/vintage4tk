@@ -143,3 +143,4 @@ vintage4tk/settings/local.py
 
 node_modules
 frontend/dist
+media

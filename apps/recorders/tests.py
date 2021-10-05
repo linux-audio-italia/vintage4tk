@@ -1,7 +1,7 @@
-from django.conf import settings
+import hashlib
+
 from django.db import IntegrityError
 from django.db.utils import DataError
-from django.templatetags.static import static
 from django.test import TestCase
 from django.urls import reverse
 
@@ -34,11 +34,15 @@ class TestCaseBrandModel(TestCase):
 
     def test_brand_picture_returns_the_static_url_of_the_png_named_like_the_slug(self):
         yamaha = Brand.objects.create(name="yamaha")
-        self.assertEqual(yamaha.picture, static("brand_logos/yamaha.png"))
+        expected_md5 = hashlib.md5(open("frontend/dist/brand_logos/yamaha.png", "rb").read()).hexdigest()
+        got_md5 = hashlib.md5(yamaha.picture.read()).hexdigest()
+        self.assertEquals(expected_md5, got_md5)
 
     def test_brand_picture_returns_the_fallback_image_if_static_image_is_missing(self):
         dummy_brand = Brand.objects.create(name="dummy")
-        self.assertEqual(dummy_brand.picture, static(settings.FALLBACK_BRAND_PICTURE))
+        expected_md5 = hashlib.md5(open("frontend/dist/brand_logos/placeholder.png", "rb").read()).hexdigest()
+        got_md5 = hashlib.md5(dummy_brand.picture.read()).hexdigest()
+        self.assertEquals(expected_md5, got_md5)
 
 
 class TestCaseRecorderModel(TestCase):

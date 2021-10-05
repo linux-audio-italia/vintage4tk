@@ -1,10 +1,9 @@
-from os.path import join as pathjoin
+import os
 
 from autoslug import AutoSlugField
 from django.conf import settings
 from django.contrib.staticfiles import finders
 from django.db import models
-from django.templatetags.static import static
 
 
 class Brand(models.Model):
@@ -16,11 +15,15 @@ class Brand(models.Model):
     def __str__(self):
         return self.name
 
+    def open_static(self, path):
+        static_path = finders.find(path)
+        return open(str(static_path), "rb") if static_path else None
+
     @property
     def picture(self):
-        path = pathjoin("brand_logos", f"{self.slug}.png")
-        pic = path if finders.find(path) else settings.FALLBACK_BRAND_PICTURE
-        return static(pic)
+        brand_image = self.open_static(os.path.join("brand_logos", f"{self.slug}.png"))
+        fallback_image = self.open_static(settings.FALLBACK_BRAND_PICTURE)
+        return brand_image or fallback_image
 
     class Meta:
         verbose_name_plural = "Brands"

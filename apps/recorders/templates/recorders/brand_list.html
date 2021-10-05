@@ -1,11 +1,12 @@
 {% extends "root.html" %}
+{% load imagekit %}
 
 {% block main %}
   <ul>
     {% for brand in brands %}
       <li>
         <a href="{% url 'brand-detail' brand.slug %}">
-          <img src="{{ brand.picture }}" alt="{{ brand.name }}" height="100", width="100" />
+          {% generateimage 'recorders:brand_logo_listing' source=brand.picture -- alt=brand.name %}
           {{ brand.name }}
         </a>
       </li>
