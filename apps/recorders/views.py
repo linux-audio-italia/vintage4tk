@@ -1,7 +1,18 @@
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, ListView
+from django.views.generic.base import ContextMixin
 
 from .models import Brand, Recorder
+
+
+class BreadcrumbsMixin(ContextMixin):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["breadcrumbs"] = [("home", reverse_lazy("brand-list"))] + self.get_breadcrumbs()
+        return context
+
+    def get_breadcrumbs(self):
+        return []
 
 
 class BrandListView(ListView):
@@ -9,18 +20,16 @@ class BrandListView(ListView):
     model = Brand
 
 
-class BrandDetailView(DetailView):
+class BrandDetailView(DetailView, BreadcrumbsMixin):
     context_object_name = "brand"
     model = Brand
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    def get_breadcrumbs(self):
         current_brand = self.get_object()
-        context["breadcrumbs"] = [("home", reverse_lazy("brand-list")), (current_brand.name, None)]
-        return context
+        return [(current_brand.name, None)]
 
 
-class RecorderDetailView(DetailView):
+class RecorderDetailView(DetailView, BreadcrumbsMixin):
     context_object_name = "recorder"
     model = Recorder
 
@@ -29,12 +38,9 @@ class RecorderDetailView(DetailView):
             slug=self.kwargs.get(self.slug_field), brand__slug=self.kwargs.get("brand_slug")
         )
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    def get_breadcrumbs(self):
         recorder = self.get_object()
-        context["breadcrumbs"] = [
-            ("home", reverse_lazy("brand-list")),
+        return [
             (recorder.brand.name, reverse_lazy("brand-detail", args=[recorder.brand.slug])),
             (recorder.model, None),
         ]
-        return context
