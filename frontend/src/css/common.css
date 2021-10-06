@@ -17,6 +17,11 @@ a:visited {
   color: var(--hi);
 }
 
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
 .SiteHeader {
   border-bottom: var(--border-main);
   padding-bottom: var(--air);
@@ -46,4 +51,27 @@ a:visited {
 
 .MainNav-link--about {
   margin-left: auto;
+}
+
+.BrandCards {
+  display: grid;
+  grid-gap: var(--air);
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  list-style: none;
+  margin-top: var(--air-l);
+}
+
+.BrandCard-link {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 60px;
+  border: var(--border-main);
+  border-radius: 6px;
+  padding-left: var(--air);
+  padding-right: var(--air);
+}
+
+.BrandCard-link:hover {
+  background-color: var(--papiro);
 }

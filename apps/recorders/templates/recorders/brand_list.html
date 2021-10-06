@@ -1,15 +1,13 @@
 {% extends "root.html" %}
-{% load imagekit %}
 
 {% block main %}
-  <ul>
+  <h1>Recorders brands</h1>
+  <p>
+    Browse the cassette recorders by brand.
+  </p>
+  <ul class="BrandCards">
     {% for brand in brands %}
-      <li>
-        <a href="{% url 'brand-detail' brand.slug %}">
-          {% generateimage 'recorders:brand_logo_listing' source=brand.picture -- alt=brand.name %}
-          {{ brand.name }}
-        </a>
-      </li>
+      {% include "recorders/includes/brand_card.html" with brand=brand %}
     {% endfor %}
   </ul>
 {% endblock main %}
