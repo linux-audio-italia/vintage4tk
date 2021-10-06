@@ -1,6 +1,8 @@
 {% extends "root.html" %}
 
 {% block main %}
+  {% include 'includes/breadcrumbs.html' %}
+
   <h1>Models of {{ brand.name|capfirst }}</h1>
   <p>
     Browse the models of {{ brand.name|capfirst }}.

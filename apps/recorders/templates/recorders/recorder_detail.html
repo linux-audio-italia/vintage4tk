@@ -1,5 +1,7 @@
 {% extends "root.html" %}
 
 {% block main %}
-  <h1>{{ recorder.brand|capfirst}} {{ recorder.model|capfirst }}</h1>
+  {% include 'includes/breadcrumbs.html' %}
+
+  <h1>{{ recorder.brand|capfirst }} {{ recorder.model|capfirst }}</h1>
 {% endblock main %}
