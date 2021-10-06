@@ -1,15 +1,13 @@
 {% extends "root.html" %}
 
 {% block main %}
-  <h1>{{ brand }}</h1>
-
-  <ul>
+  <h1>Models of {{ brand.name|capfirst }}</h1>
+  <p>
+    Browse the models of {{ brand.name|capfirst }}.
+  </p>
+  <ul class="RecorderCards">
     {% for recorder in brand.recorder_set.all %}
-      <li>
-        <a href="{% url 'recorder-detail' recorder.brand recorder.slug %}">
-          {{ recorder.model }}
-        </a>
-      </li>
+      {% include "recorders/includes/recorder_card.html" with recorder=recorder %}
     {% endfor %}
   </ul>
 {% endblock main %}
