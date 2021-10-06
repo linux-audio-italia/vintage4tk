@@ -88,6 +88,15 @@ class TestCaseRecorderModel(TestCase):
             Recorder.objects.create(model="x" * 101, brand=yamaha)
 
 
+class TestCaseBrandDetailView(TestCase):
+    fixtures = ["brands.json"]
+
+    def test_context_includes_breadcrumbs(self):
+        response = self.client.get(reverse("brand-detail", args=["yamaha"]))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context["breadcrumbs"], [("home", "/"), ("yamaha", None)])
+
+
 class TestCaseRecorderDetailView(TestCase):
     fixtures = ["brands.json", "recorders.json"]
 
@@ -100,3 +109,8 @@ class TestCaseRecorderDetailView(TestCase):
     def test_recorder_detail_view_ignores_recorders_which_dont_have_the_right_brand(self):
         response = self.client.get(reverse("recorder-detail", kwargs={"brand_slug": "fostex", "slug": "mt3x"}))
         self.assertEqual(response.status_code, 404)
+
+    def test_context_includes_breadcrumbs(self):
+        response = self.client.get(reverse("recorder-detail", kwargs={"brand_slug": "yamaha", "slug": "mt3x"}))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context["breadcrumbs"], [("home", "/"), ("yamaha", "/yamaha"), ("mt3x", None)])
