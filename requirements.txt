@@ -10,10 +10,13 @@ coverage==5.5
 decorator==5.0.9
 distlib==0.3.3
 Django==3.2.6
+django-appconf==1.0.5
 django-autoslug==1.9.8
-django-stubs==1.8.0
-django-stubs-ext==0.2.0
+django-imagekit==4.0.2
+django-stubs==1.9.0
+django-stubs-ext==0.3.1
 djlint==0.4.9
+easy-thumbnails==2.7.1
 filelock==3.2.0
 flake8==3.9.2
 ipython==7.26.0
@@ -30,6 +33,8 @@ parso==0.8.2
 pathspec==0.9.0
 pexpect==4.8.0
 pickleshare==0.7.5
+pilkit==2.0
+Pillow==8.3.2
 platformdirs==2.4.0
 pluggy==1.0.0
 prompt-toolkit==3.0.19
@@ -39,6 +44,7 @@ py==1.10.0
 pycodestyle==2.7.0
 pyflakes==2.3.1
 Pygments==2.10.0
+pymemcache==3.5.0
 pyparsing==2.4.7
 pyright==0.0.8
 pytz==2021.1
@@ -48,7 +54,9 @@ rope==0.20.1
 ropemode==0.5
 ropevim==0.8.1
 six==1.16.0
+sorl-thumbnail==12.7.0
 sqlparse==0.4.2
+static-thumbnails==0.9
 supervisor==4.2.2
 toml==0.10.2
 tomli==1.2.1
@@ -56,6 +64,8 @@ tomlkit==0.7.2
 tox==3.24.4
 tqdm==4.62.3
 traitlets==5.0.5
+types-pytz==2021.1.2
+types-PyYAML==5.4.10
 typing-extensions==3.10.0.0
 virtualenv==20.8.1
 wcwidth==0.2.5
