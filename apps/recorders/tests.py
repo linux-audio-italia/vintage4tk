@@ -6,6 +6,7 @@ from django.test import TestCase
 from django.urls import reverse
 
 from apps.recorders.models import Brand, Recorder
+from apps.recorders.views import BreadcrumbsMixin
 
 
 class TestCaseBrandModel(TestCase):
@@ -43,6 +44,10 @@ class TestCaseBrandModel(TestCase):
         expected_md5 = hashlib.md5(open("frontend/dist/brand_logos/placeholder.png", "rb").read()).hexdigest()
         got_md5 = hashlib.md5(dummy_brand.picture.read()).hexdigest()
         self.assertEquals(expected_md5, got_md5)
+
+    def test_brand_absolute_url(self):
+        yamaha = Brand.objects.create(name="yamaha")
+        self.assertEqual(yamaha.get_absolute_url(), "/yamaha")
 
 
 class TestCaseRecorderModel(TestCase):
@@ -87,14 +92,10 @@ class TestCaseRecorderModel(TestCase):
         with self.assertRaisesRegexp(DataError, "value too long for type character varying"):
             Recorder.objects.create(model="x" * 101, brand=yamaha)
 
-
-class TestCaseBrandDetailView(TestCase):
-    fixtures = ["brands.json"]
-
-    def test_context_includes_breadcrumbs(self):
-        response = self.client.get(reverse("brand-detail", args=["yamaha"]))
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.context["breadcrumbs"], [("home", "/"), ("yamaha", None)])
+    def test_recorder_absolute_url(self):
+        yamaha = Brand.objects.get(name="yamaha")
+        mt3x = Recorder.objects.create(model="mt3x", brand=yamaha)
+        self.assertEqual(mt3x.get_absolute_url(), "/yamaha/mt3x")
 
 
 class TestCaseRecorderDetailView(TestCase):
@@ -110,7 +111,22 @@ class TestCaseRecorderDetailView(TestCase):
         response = self.client.get(reverse("recorder-detail", kwargs={"brand_slug": "fostex", "slug": "mt3x"}))
         self.assertEqual(response.status_code, 404)
 
-    def test_context_includes_breadcrumbs(self):
+
+class TestCaseBreadcrumbsMixin(TestCase):
+    fixtures = ["brands.json", "recorders.json"]
+
+    def test_breadcrumb_mixin_default_context_contains_only_the_home_link(self):
+        b = BreadcrumbsMixin()
+        ctx = b.get_context_data()
+        self.assertEqual(ctx["breadcrumbs"], [("home", "/")])
+        self.assertEqual(b.get_breadcrumbs(), [])
+
+    def test_brand_detail_context_includes_breadcrumbs(self):
+        response = self.client.get(reverse("brand-detail", args=["yamaha"]))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context["breadcrumbs"], [("home", "/"), ("yamaha", None)])
+
+    def test_recorder_detail_context_includes_breadcrumbs(self):
         response = self.client.get(reverse("recorder-detail", kwargs={"brand_slug": "yamaha", "slug": "mt3x"}))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context["breadcrumbs"], [("home", "/"), ("yamaha", "/yamaha"), ("mt3x", None)])

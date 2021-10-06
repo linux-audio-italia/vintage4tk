@@ -4,6 +4,7 @@ from autoslug import AutoSlugField
 from django.conf import settings
 from django.contrib.staticfiles import finders
 from django.db import models
+from django.urls import reverse
 
 
 class Brand(models.Model):
@@ -25,6 +26,9 @@ class Brand(models.Model):
         fallback_image = self.open_static(settings.FALLBACK_BRAND_PICTURE)
         return brand_image or fallback_image
 
+    def get_absolute_url(self):
+        return reverse("brand-detail", args=[self.slug])
+
     class Meta:
         verbose_name_plural = "Brands"
         indexes = [models.Index(fields=["name"])]
@@ -39,6 +43,9 @@ class Recorder(models.Model):
 
     def __str__(self):
         return f"{self.brand} {self.model}"
+
+    def get_absolute_url(self):
+        return reverse("recorder-detail", args=[self.brand.slug, self.slug])
 
     class Meta:
         verbose_name_plural = "Recorders"

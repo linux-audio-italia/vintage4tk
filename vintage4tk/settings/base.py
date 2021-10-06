@@ -20,6 +20,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sites",
+    "django.contrib.sitemaps",
     "imagekit",
     "apps.accounts",
     "apps.recorders",
@@ -108,3 +110,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "accounts.User"
 
 FALLBACK_BRAND_PICTURE = os.path.join("brand_logos", "placeholder.png")
+
+SITE_ID = 1
