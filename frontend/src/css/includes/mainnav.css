@@ -1,0 +1,10 @@
+.MainNav {
+  display: flex;
+}
+
+.MainNav-link {
+  display: block;
+  margin-right: var(--air);
+  padding-bottom: var(--air);
+  padding-top: var(--air);
+}

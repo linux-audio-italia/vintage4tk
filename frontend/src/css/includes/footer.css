@@ -1,0 +1,5 @@
+.SiteFooter {
+  border-top: var(--border-main);
+  padding-bottom: var(--air);
+  padding-top: var(--air);
+}

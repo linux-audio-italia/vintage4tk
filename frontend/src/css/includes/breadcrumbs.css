@@ -1,0 +1,20 @@
+.Breadcrumbs {
+  display: flex;
+  font-size: 0.9rem;
+  list-style: none;
+  margin-bottom: var(--air);
+}
+
+.Breadcrumbs-item {
+  margin-right: var(--air-s);
+}
+
+.Breadcrumbs-item::after {
+  content: "/";
+  margin-left: var(--air-s);
+}
+
+.Breadcrumbs-item:last-child::after {
+  content: "";
+  margin-left: 0;
+}

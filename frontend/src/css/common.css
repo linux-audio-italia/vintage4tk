@@ -1,6 +1,12 @@
 @import "./includes/variables.css";
 @import "./includes/reset.css";
 @import "./includes/utils.css";
+@import "./includes/header.css";
+@import "./includes/main.css";
+@import "./includes/footer.css";
+@import "./includes/mainnav.css";
+@import "./includes/breadcrumbs.css";
+@import "./includes/cards.css";
 
 body {
   background-color: var(--white);
@@ -20,82 +26,4 @@ a:visited {
 h1 {
   font-size: 2rem;
   font-weight: bold;
-}
-
-.SiteHeader {
-  border-bottom: var(--border-main);
-  padding-bottom: var(--air);
-  padding-top: var(--air);
-}
-
-.SiteMain {
-  padding-bottom: var(--air-l);
-  padding-top: var(--air-l);
-}
-
-.SiteFooter {
-  border-top: var(--border-main);
-  padding-bottom: var(--air);
-  padding-top: var(--air);
-}
-
-.MainNav {
-  display: flex;
-}
-
-.MainNav-link {
-  display: block;
-  padding-bottom: var(--air);
-  padding-top: var(--air);
-}
-
-.MainNav-link--about {
-  margin-left: auto;
-}
-
-.BrandCards,
-.RecorderCards {
-  display: grid;
-  grid-gap: var(--air);
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  list-style: none;
-  margin-top: var(--air-l);
-}
-
-.BrandCard-link,
-.RecorderCard-link {
-  align-items: center;
-  border: var(--border-main);
-  border-radius: 6px;
-  display: flex;
-  height: 60px;
-  justify-content: center;
-  padding-left: var(--air);
-  padding-right: var(--air);
-}
-
-.BrandCard-link:hover,
-.RecorderCard:hover {
-  background-color: var(--papiro);
-}
-
-.Breadcrumbs {
-  display: flex;
-  font-size: 0.9rem;
-  list-style: none;
-  margin-bottom: var(--air);
-}
-
-.Breadcrumbs-item {
-  margin-right: var(--air-s);
-}
-
-.Breadcrumbs-item::after {
-  content: "/";
-  margin-left: var(--air-s);
-}
-
-.Breadcrumbs-item:last-child::after {
-  content: "";
-  margin-left: 0;
 }

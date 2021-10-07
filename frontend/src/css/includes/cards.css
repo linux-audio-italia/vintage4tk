@@ -1,0 +1,25 @@
+.BrandCards,
+.RecorderCards {
+  display: grid;
+  grid-gap: var(--air);
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  list-style: none;
+  margin-top: var(--air-l);
+}
+
+.BrandCard-link,
+.RecorderCard-link {
+  align-items: center;
+  border: var(--border-main);
+  border-radius: 6px;
+  display: flex;
+  height: 60px;
+  justify-content: center;
+  padding-left: var(--air);
+  padding-right: var(--air);
+}
+
+.BrandCard-link:hover,
+.RecorderCard:hover {
+  background-color: var(--papiro);
+}

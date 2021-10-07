@@ -1,0 +1,5 @@
+.SiteHeader {
+  border-bottom: var(--border-main);
+  padding-bottom: var(--air);
+  padding-top: var(--air);
+}
