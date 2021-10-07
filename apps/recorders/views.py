@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, ListView
 from django.views.generic.base import ContextMixin
@@ -44,3 +45,16 @@ class RecorderDetailView(DetailView, BreadcrumbsMixin):
             (recorder.brand.name, reverse_lazy("brand-detail", args=[recorder.brand.slug])),
             (recorder.model, None),
         ]
+
+
+class SearchResultsView(ListView, BreadcrumbsMixin):
+    model = Recorder
+    template_name = "recorders/search_results.html"
+    context_object_name = "results"
+
+    def get_queryset(self):
+        query = self.request.GET.get("q", "")
+        return Recorder.objects.filter(Q(model__icontains=query) | Q(brand__name__icontains=query))
+
+    def get_breadcrumbs(self):
+        return [("search results", None)]

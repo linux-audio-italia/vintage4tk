@@ -2,5 +2,11 @@
   <nav class="MainNav limit">
     <a class="MainNav-link" href="{% url 'brand-list' %}">Vintage 4tk Cassette Recorders</a>
     <a class="MainNav-link" href="#">About</a>
+    <section class="SiteSearch">
+      <form class="SiteSearch-form" action="{% url 'search-results' %}" method="GET">
+        <input type="search" name="q" placeholder="e.g. mt3x" id="q" />
+        <input type="submit" value="Search" />
+      </form>
+    </section>
   </nav>
 </header>

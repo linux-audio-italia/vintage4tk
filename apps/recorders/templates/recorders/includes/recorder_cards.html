@@ -1,0 +1,5 @@
+<ul class="RecorderCards">
+  {% for recorder in recorders %}
+    {% include "recorders/includes/recorder_card.html" with recorder=recorder %}
+  {% endfor %}
+</ul>
