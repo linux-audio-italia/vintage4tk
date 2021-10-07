@@ -27,3 +27,13 @@ h1 {
   font-size: 2rem;
   font-weight: bold;
 }
+
+input {
+  border: var(--border-main);
+  padding: var(--air-s);
+}
+
+[type="submit"] {
+  background-color: var(--white-d);
+  cursor: pointer;
+}

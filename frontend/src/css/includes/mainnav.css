@@ -1,10 +1,27 @@
 .MainNav {
+  align-items: center;
   display: flex;
 }
 
 .MainNav-link {
   display: block;
   margin-right: var(--air);
-  padding-bottom: var(--air);
-  padding-top: var(--air);
+  padding-bottom: var(--air-s);
+  padding-top: var(--air-s);
+}
+
+.SiteSearch {
+  flex: 1;
+}
+
+.SiteSearch-form {
+  display: flex;
+}
+
+.SiteSearch-form [type="search"] {
+  flex: 1;
+}
+
+.SiteSearch-form [type="submit"] {
+  margin-left: var(--air-s);
 }

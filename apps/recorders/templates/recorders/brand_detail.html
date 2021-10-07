@@ -7,9 +7,5 @@
   <p>
     Browse the models of {{ brand.name|capfirst }}.
   </p>
-  <ul class="RecorderCards">
-    {% for recorder in brand.recorder_set.all %}
-      {% include "recorders/includes/recorder_card.html" with recorder=recorder %}
-    {% endfor %}
-  </ul>
+  {% include "recorders/includes/recorder_cards.html" with recorders=brand.recorder_set.all %}
 {% endblock main %}

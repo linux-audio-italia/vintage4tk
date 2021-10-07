@@ -1,0 +1,14 @@
+{% extends "root.html" %}
+
+{% block main %}
+  {% include 'includes/breadcrumbs.html' %}
+
+  <h1>Search results</h1>
+
+  {% if results %}
+    <p>We found {{ results|length }} recorder{{ results|pluralize:",s" }} based on your search.</p>
+    {% include "recorders/includes/recorder_cards.html" with recorders=results %}
+  {% else %}
+    <p>Sorry, no recorders match your search.</p>
+  {% endif %}
+{% endblock main %}
