@@ -12,7 +12,6 @@ distlib==0.3.3
 Django==3.2.6
 django-appconf==1.0.5
 django-autoslug==1.9.8
-django-imagekit==4.0.2
 django-stubs==1.9.0
 django-stubs-ext==0.3.1
 djlint==0.4.9

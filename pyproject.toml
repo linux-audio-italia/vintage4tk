@@ -1,5 +1,6 @@
 [tool.black]
 line-length = 119
+exclude = ["./apps/*/migrations/*"]
 
 [tool.coverage]
 run.omit = ["./venv/*", "manage.py", "./apps/*/tests.py"]
