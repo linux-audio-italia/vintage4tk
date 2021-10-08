@@ -6,6 +6,7 @@
       "model": "mt3x",
       "slug": "mt3x",
       "brand": 1,
+      "picture": "recorders/recorder_placeholder.gif",
       "created_at": "2021-09-29T13:49:58.807Z",
       "updated_at": "2021-09-29T13:49:58.807Z"
     }
@@ -17,6 +18,7 @@
       "model": "mt4x",
       "slug": "mt4x",
       "brand": 1,
+      "picture": "recorders/recorder_placeholder.gif",
       "created_at": "2021-09-29T13:50:03.908Z",
       "updated_at": "2021-09-29T13:50:03.908Z"
     }
@@ -28,6 +30,7 @@
       "model": "mt50",
       "slug": "mt50",
       "brand": 1,
+      "picture": "recorders/recorder_placeholder.gif",
       "created_at": "2021-09-29T13:50:24.126Z",
       "updated_at": "2021-09-29T13:50:24.126Z"
     }
@@ -39,6 +42,7 @@
       "model": "x-28",
       "slug": "x-28",
       "brand": 2,
+      "picture": "recorders/recorder_placeholder.gif",
       "created_at": "2021-09-29T13:51:04.054Z",
       "updated_at": "2021-09-29T13:51:04.054Z"
     }
@@ -50,6 +54,7 @@
       "model": "x-28h",
       "slug": "x-28h",
       "brand": 2,
+      "picture": "recorders/recorder_placeholder.gif",
       "created_at": "2021-09-29T13:51:11.012Z",
       "updated_at": "2021-09-29T13:51:11.012Z"
     }
@@ -61,6 +66,7 @@
       "model": "488 mkII",
       "slug": "488-mkii",
       "brand": 3,
+      "picture": "recorders/recorder_placeholder.gif",
       "created_at": "2021-09-29T13:52:13.693Z",
       "updated_at": "2021-09-29T13:52:13.693Z"
     }

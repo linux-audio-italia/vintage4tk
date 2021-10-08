@@ -5,6 +5,7 @@
     "fields": {
       "name": "yamaha",
       "slug": "yamaha",
+      "picture": "brands/yamaha.png",
       "created_at": "2021-08-17T14:46:30.529Z",
       "updated_at": "2021-08-17T14:46:30.529Z"
     }
@@ -15,6 +16,7 @@
     "fields": {
       "name": "fostex",
       "slug": "fostex",
+      "picture": "brands/fostex.png",
       "created_at": "2021-08-17T14:46:35.136Z",
       "updated_at": "2021-08-17T14:46:35.136Z"
     }
@@ -25,8 +27,10 @@
     "fields": {
       "name": "tascam",
       "slug": "tascam",
+      "picture": "brands/tascam.png",
       "created_at": "2021-08-17T14:46:38.523Z",
       "updated_at": "2021-08-17T14:46:38.523Z"
     }
   }
 ]
+

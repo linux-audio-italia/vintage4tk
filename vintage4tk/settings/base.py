@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,7 +21,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.sites",
     "django.contrib.sitemaps",
-    "imagekit",
+    "easy_thumbnails",
     "apps.accounts",
     "apps.recorders",
 ]
@@ -109,6 +108,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "accounts.User"
 
-FALLBACK_BRAND_PICTURE = os.path.join("brand_logos", "placeholder.png")
-
 SITE_ID = 1
+
+THUMBNAIL_ALIASES = {
+    "": {
+        "brand_card": {"size": (50, 50), "crop": False, "autocrop": True},
+        "recorder_card": {"size": (50, 50), "crop": False, "autocrop": True},
+    },
+}

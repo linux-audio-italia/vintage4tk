@@ -1,8 +1,15 @@
-{% load imagekit %}
+{% load thumbnail %}
 
 <li class="BrandCard">
   <a href="{% url 'brand-detail' brand.slug %}" class="BrandCard-link">
-    {% generateimage 'recorders:brand_logo_listing' source=brand.picture -- alt=brand.name %}
-    <span class="sr-only">Visit the models of the brand {{ brand.name }}</span>
+    {% with brand.picture.brand_card as picture %}
+      <img
+        src="{{ picture.url }}"
+        alt="{{ brand.name }} logo"
+        width="{{ picture.width }}"
+        height="{{ picture.height }}"
+      />
+    {% endwith %}
+    <span class="sr-only">Visit models of the brand {{ brand.name }}</span>
   </a>
 </li>

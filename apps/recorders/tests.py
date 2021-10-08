@@ -1,5 +1,3 @@
-import hashlib
-
 from django.db import IntegrityError
 from django.db.utils import DataError
 from django.test import TestCase
@@ -32,18 +30,6 @@ class TestCaseBrandModel(TestCase):
 
         with self.assertRaisesRegexp(DataError, "value too long for type character varying"):
             Brand.objects.create(name="x" * 101)
-
-    def test_brand_picture_returns_the_static_url_of_the_png_named_like_the_slug(self):
-        yamaha = Brand.objects.create(name="yamaha")
-        expected_md5 = hashlib.md5(open("frontend/dist/brand_logos/yamaha.png", "rb").read()).hexdigest()
-        got_md5 = hashlib.md5(yamaha.picture.read()).hexdigest()
-        self.assertEquals(expected_md5, got_md5)
-
-    def test_brand_picture_returns_the_fallback_image_if_static_image_is_missing(self):
-        dummy_brand = Brand.objects.create(name="dummy")
-        expected_md5 = hashlib.md5(open("frontend/dist/brand_logos/placeholder.png", "rb").read()).hexdigest()
-        got_md5 = hashlib.md5(dummy_brand.picture.read()).hexdigest()
-        self.assertEquals(expected_md5, got_md5)
 
     def test_brand_absolute_url(self):
         yamaha = Brand.objects.create(name="yamaha")
