@@ -16,12 +16,19 @@ class BreadcrumbsMixin(ContextMixin):
         return []
 
 
+class SidebarMixin(ContextMixin):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["sidebar"] = {"brands": Brand.objects.all()}
+        return context
+
+
 class BrandListView(ListView):
     context_object_name = "brands"
     model = Brand
 
 
-class BrandDetailView(DetailView, BreadcrumbsMixin):
+class BrandDetailView(DetailView, BreadcrumbsMixin, SidebarMixin):
     context_object_name = "brand"
     model = Brand
 
@@ -30,7 +37,7 @@ class BrandDetailView(DetailView, BreadcrumbsMixin):
         return [(current_brand.name, None)]
 
 
-class RecorderDetailView(DetailView, BreadcrumbsMixin):
+class RecorderDetailView(DetailView, BreadcrumbsMixin, SidebarMixin):
     context_object_name = "recorder"
     model = Recorder
 
@@ -47,7 +54,7 @@ class RecorderDetailView(DetailView, BreadcrumbsMixin):
         ]
 
 
-class SearchResultsView(ListView, BreadcrumbsMixin):
+class SearchResultsView(ListView, BreadcrumbsMixin, SidebarMixin):
     model = Recorder
     template_name = "recorders/search_results.html"
     context_object_name = "results"

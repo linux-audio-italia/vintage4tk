@@ -118,6 +118,17 @@ class TestCaseBreadcrumbsMixin(TestCase):
         self.assertEqual(response.context["breadcrumbs"], [("home", "/"), ("yamaha", "/yamaha/"), ("mt3x", None)])
 
 
+class TestCaseSidebarMixir(TestCase):
+    fixtures = ["brands.json", "recorders.json"]
+
+    def test_all_brands_are_injected_into_the_context(self):
+        all_brands = Brand.objects.all()
+        response = self.client.get(reverse("brand-detail", args=["yamaha"]))
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue("sidebar" in response.context)
+        self.assertTrue(list(all_brands) == list(response.context["sidebar"]["brands"]))
+
+
 class TestCaseRecordersSearch(TestCase):
     fixtures = ["brands.json", "recorders.json"]
 
