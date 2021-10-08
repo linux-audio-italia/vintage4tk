@@ -24,8 +24,8 @@ SITEMAPS = {
 
 urlpatterns: URLList = [
     path("admin/", admin.site.urls),
-    path("sitemap.xml", sitemap, {"sitemaps": SITEMAPS}, name="django.contrib.sitemaps.views.sitemap"),
     path("", include("apps.recorders.urls")),
+    path("sitemap.xml", sitemap, {"sitemaps": SITEMAPS}, name="django.contrib.sitemaps.views.sitemap"),
 ]
 
 if settings.DEBUG:

@@ -47,7 +47,7 @@ class TestCaseBrandModel(TestCase):
 
     def test_brand_absolute_url(self):
         yamaha = Brand.objects.create(name="yamaha")
-        self.assertEqual(yamaha.get_absolute_url(), "/yamaha")
+        self.assertEqual(yamaha.get_absolute_url(), "/yamaha/")
 
 
 class TestCaseRecorderModel(TestCase):
@@ -95,7 +95,7 @@ class TestCaseRecorderModel(TestCase):
     def test_recorder_absolute_url(self):
         yamaha = Brand.objects.get(name="yamaha")
         mt3x = Recorder.objects.create(model="mt3x", brand=yamaha)
-        self.assertEqual(mt3x.get_absolute_url(), "/yamaha/mt3x")
+        self.assertEqual(mt3x.get_absolute_url(), "/yamaha/mt3x/")
 
 
 class TestCaseRecorderDetailView(TestCase):
@@ -129,7 +129,7 @@ class TestCaseBreadcrumbsMixin(TestCase):
     def test_recorder_detail_context_includes_breadcrumbs(self):
         response = self.client.get(reverse("recorder-detail", kwargs={"brand_slug": "yamaha", "slug": "mt3x"}))
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.context["breadcrumbs"], [("home", "/"), ("yamaha", "/yamaha"), ("mt3x", None)])
+        self.assertEqual(response.context["breadcrumbs"], [("home", "/"), ("yamaha", "/yamaha/"), ("mt3x", None)])
 
 
 class TestCaseRecordersSearch(TestCase):
@@ -161,8 +161,8 @@ class TestCaseRecordersSearch(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(content_str.count('class="RecorderCard"'), 2)
         self.assertContains(response, "We found 2 recorders based on your search.")
-        self.assertContains(response, 'href="/fostex/x-28"')
-        self.assertContains(response, 'href="/fostex/x-28h"')
+        self.assertContains(response, 'href="/fostex/x-28/"')
+        self.assertContains(response, 'href="/fostex/x-28h/"')
         self.assertNotContains(response, "Sorry, no recorders match your search.")
 
     def test_search_in_recoder_model(self):
@@ -171,9 +171,9 @@ class TestCaseRecordersSearch(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(content_str.count('class="RecorderCard"'), 3)
         self.assertContains(response, "We found 3 recorders based on your search.")
-        self.assertContains(response, 'href="/yamaha/mt3x"')
-        self.assertContains(response, 'href="/yamaha/mt4x"')
-        self.assertContains(response, 'href="/yamaha/mt50"')
+        self.assertContains(response, 'href="/yamaha/mt3x/"')
+        self.assertContains(response, 'href="/yamaha/mt4x/"')
+        self.assertContains(response, 'href="/yamaha/mt50/"')
         self.assertNotContains(response, "Sorry, no recorders match your search.")
 
     def test_search_in_both_brand_name_and_recoder_model(self):
@@ -182,9 +182,29 @@ class TestCaseRecordersSearch(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(content_str.count('class="RecorderCard"'), 4)
         self.assertContains(response, "We found 4 recorders based on your search.")
-        self.assertContains(response, 'href="/yamaha/mt3x"')
-        self.assertContains(response, 'href="/yamaha/mt4x"')
-        self.assertContains(response, 'href="/yamaha/mt50"')
-        self.assertContains(response, 'href="/fostex/x-28h"')
-        self.assertNotContains(response, 'href="/fostex/x-28"')
+        self.assertContains(response, 'href="/yamaha/mt3x/"')
+        self.assertContains(response, 'href="/yamaha/mt4x/"')
+        self.assertContains(response, 'href="/yamaha/mt50/"')
+        self.assertContains(response, 'href="/fostex/x-28h/"')
+        self.assertNotContains(response, 'href="/fostex/x-28/"')
         self.assertNotContains(response, "Sorry, no recorders match your search.")
+
+
+class TestCaseURLS(TestCase):
+    fixtures = ["brands.json", "recorders.json"]
+    status_200 = ["", "/", "/yamaha/", "/yamaha/mt3x/", "/search/"]
+    status_301 = ["/yamaha", "/yamaha/mt3x", "/search", "/admin"]
+    status_302 = ["/admin/"]
+
+    def test_every_url_return_an_expected_status_code(self):
+        for url in self.status_200:
+            response = self.client.get(url)
+            self.assertEqual(response.status_code, 200)
+
+        for url in self.status_301:
+            response = self.client.get(url)
+            self.assertEqual(response.status_code, 301)
+
+        for url in self.status_302:
+            response = self.client.get(url)
+            self.assertEqual(response.status_code, 302)
