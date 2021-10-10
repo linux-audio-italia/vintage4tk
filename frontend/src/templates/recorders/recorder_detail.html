@@ -1,7 +1,10 @@
 {% extends "root.html" %}
+{% load breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumbs %}
+{% endblock breadcrumbs %}
 
 {% block main %}
-  {% include 'includes/breadcrumbs.html' %}
-
   <h1>{{ recorder.brand|capfirst }} {{ recorder.model|capfirst }}</h1>
 {% endblock main %}

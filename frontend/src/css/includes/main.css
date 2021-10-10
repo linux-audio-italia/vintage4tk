@@ -1,4 +1,4 @@
-.SiteMain {
-  padding-bottom: var(--air-l);
-  padding-top: var(--air-l);
+.SiteMain-content {
+  padding-bottom: var(--air);
+  padding-top: var(--air);
 }

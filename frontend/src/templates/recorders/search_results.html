@@ -1,8 +1,11 @@
 {% extends "root.html" %}
+{% load breadcrumbs %}
+
+{% block breadcrumbs %}
+  {% breadcrumbs %}
+{% endblock breadcrumbs %}
 
 {% block main %}
-  {% include 'includes/breadcrumbs.html' %}
-
   <h1>Search results</h1>
 
   {% if results %}

@@ -12,8 +12,11 @@
   </head>
   <body>
     {% include "includes/header.html" %}
-    <main class="SiteMain limit">
-      {% block main %}{% endblock main %}
+    <main class="SiteMain">
+      {% block breadcrumbs %}{% endblock breadcrumbs %}
+      <div class="SiteMain-content limit">
+        {% block main %}{% endblock main %}
+      </div>
     </main>
     {% include "includes/footer.html" %}
   </body>
