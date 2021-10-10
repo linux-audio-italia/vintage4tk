@@ -1,9 +1,4 @@
-{% extends "root.html" %}
-{% load breadcrumbs %}
-
-{% block breadcrumbs %}
-  {% breadcrumbs %}
-{% endblock breadcrumbs %}
+{% extends "root_with_breadcrumbs.html" %}
 
 {% block main %}
   <h1>{{ recorder.brand|capfirst }} {{ recorder.model|capfirst }}</h1>
