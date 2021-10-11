@@ -89,12 +89,16 @@ class TestCaseRecorderDetailView(TestCase):
 
     def test_recorder_detail_view_filters_by_recorder_brand(self):
         mt3x = Recorder.objects.get(brand__slug="yamaha", slug="mt3x")
-        response = self.client.get(reverse("recorder-detail", kwargs={"brand_slug": "yamaha", "slug": "mt3x"}))
+        response = self.client.get(
+            reverse("recorders:recorder-detail", kwargs={"brand_slug": "yamaha", "slug": "mt3x"})
+        )
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context["recorder"], mt3x)
 
     def test_recorder_detail_view_ignores_recorders_which_dont_have_the_right_brand(self):
-        response = self.client.get(reverse("recorder-detail", kwargs={"brand_slug": "fostex", "slug": "mt3x"}))
+        response = self.client.get(
+            reverse("recorders:recorder-detail", kwargs={"brand_slug": "fostex", "slug": "mt3x"})
+        )
         self.assertEqual(response.status_code, 404)
 
 
@@ -108,12 +112,14 @@ class TestCaseBreadcrumbsMixin(TestCase):
         self.assertEqual(b.get_breadcrumbs(), [])
 
     def test_brand_detail_context_includes_breadcrumbs(self):
-        response = self.client.get(reverse("brand-detail", args=["yamaha"]))
+        response = self.client.get(reverse("recorders:brand-detail", args=["yamaha"]))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context["breadcrumbs"], [("home", "/"), ("yamaha", None)])
 
     def test_recorder_detail_context_includes_breadcrumbs(self):
-        response = self.client.get(reverse("recorder-detail", kwargs={"brand_slug": "yamaha", "slug": "mt3x"}))
+        response = self.client.get(
+            reverse("recorders:recorder-detail", kwargs={"brand_slug": "yamaha", "slug": "mt3x"})
+        )
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context["breadcrumbs"], [("home", "/"), ("yamaha", "/yamaha/"), ("mt3x", None)])
 
@@ -123,7 +129,7 @@ class TestCaseSidebarMixir(TestCase):
 
     def test_all_brands_are_injected_into_the_context(self):
         all_brands = Brand.objects.all()
-        response = self.client.get(reverse("brand-detail", args=["yamaha"]))
+        response = self.client.get(reverse("recorders:brand-detail", args=["yamaha"]))
         self.assertEqual(response.status_code, 200)
         self.assertTrue("sidebar" in response.context)
         self.assertTrue(list(all_brands) == list(response.context["sidebar"]["brands"]))
@@ -133,19 +139,19 @@ class TestCaseRecordersSearch(TestCase):
     fixtures = ["brands.json", "recorders.json"]
 
     def test_search_no_results(self):
-        response = self.client.get(reverse("search-results"), {"q": "pcperi"})
+        response = self.client.get(reverse("recorders:search-results"), {"q": "pcperi"})
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Sorry, no recorders match your search.")
 
     def test_search_with_an_empty_q_renders_everything(self):
-        response = self.client.get(reverse("search-results"), {"q": ""})
+        response = self.client.get(reverse("recorders:search-results"), {"q": ""})
         self.assertEqual(response.status_code, 200)
         self.assertEqual(str(response.content).count('class="RecorderCard"'), 6)
         self.assertContains(response, "We found 6 recorders based on your search.")
         self.assertNotContains(response, "Sorry, no recorders match your search.")
 
     def test_search_without_q_parameter_renders_everything(self):
-        response = self.client.get(reverse("search-results"))
+        response = self.client.get(reverse("recorders:search-results"))
         content_str = response.content.decode(response.charset)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(content_str.count('class="RecorderCard"'), 6)
@@ -153,7 +159,7 @@ class TestCaseRecordersSearch(TestCase):
         self.assertNotContains(response, "Sorry, no recorders match your search.")
 
     def test_search_in_brand_name(self):
-        response = self.client.get(reverse("search-results"), {"q": "fos"})
+        response = self.client.get(reverse("recorders:search-results"), {"q": "fos"})
         content_str = response.content.decode(response.charset)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(content_str.count('class="RecorderCard"'), 2)
@@ -163,7 +169,7 @@ class TestCaseRecordersSearch(TestCase):
         self.assertNotContains(response, "Sorry, no recorders match your search.")
 
     def test_search_in_recoder_model(self):
-        response = self.client.get(reverse("search-results"), {"q": "mt"})
+        response = self.client.get(reverse("recorders:search-results"), {"q": "mt"})
         content_str = response.content.decode(response.charset)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(content_str.count('class="RecorderCard"'), 3)
@@ -174,7 +180,7 @@ class TestCaseRecordersSearch(TestCase):
         self.assertNotContains(response, "Sorry, no recorders match your search.")
 
     def test_search_in_both_brand_name_and_recoder_model(self):
-        response = self.client.get(reverse("search-results"), {"q": "h"})
+        response = self.client.get(reverse("recorders:search-results"), {"q": "h"})
         content_str = response.content.decode(response.charset)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(content_str.count('class="RecorderCard"'), 4)

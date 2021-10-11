@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "django.contrib.sitemaps",
     "easy_thumbnails",
+    "rest_framework",
     "apps.accounts",
     "apps.recorders",
 ]
@@ -117,3 +118,5 @@ THUMBNAIL_ALIASES = {
         "recorder_detail": {"size": (300, 169), "crop": False, "autocrop": True, "upscale": True},
     },
 }
+
+REST_FRAMEWORK = {"DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly"]}

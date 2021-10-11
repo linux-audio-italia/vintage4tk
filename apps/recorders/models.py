@@ -17,7 +17,7 @@ class Brand(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse("brand-detail", args=[self.slug])
+        return reverse("recorders:brand-detail", args=[self.slug])
 
     class Meta:
         verbose_name_plural = "Brands"
@@ -38,7 +38,7 @@ class Recorder(models.Model):
         return f"{self.brand} {self.model}"
 
     def get_absolute_url(self):
-        return reverse("recorder-detail", args=[self.brand.slug, self.slug])
+        return reverse("recorders:recorder-detail", args=[self.brand.slug, self.slug])
 
     class Meta:
         verbose_name_plural = "Recorders"
