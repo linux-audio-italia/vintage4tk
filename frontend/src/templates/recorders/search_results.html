@@ -5,7 +5,7 @@
 
   {% if results %}
     <p>We found {{ results|length }} recorder{{ results|pluralize:",s" }} based on your search.</p>
-    {% include "recorders/includes/recorder_cards.html" with recorders=results %}
+    {% include "recorders/includes/recorder_cards.html" with recorders=results show_brand=True %}
   {% else %}
     <p>Sorry, no recorders match your search.</p>
   {% endif %}

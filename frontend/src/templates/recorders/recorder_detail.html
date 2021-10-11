@@ -2,7 +2,7 @@
 
 {% block main %}
   <article class="Recorder">
-    <h1>{{ recorder.brand|capfirst }} {{ recorder.model|capfirst }}</h1>
+    <h1>{{ recorder.display_name }}</h1>
 
     <div class="Recorder-picture">
       {% with recorder.picture.recorder_detail as picture %}

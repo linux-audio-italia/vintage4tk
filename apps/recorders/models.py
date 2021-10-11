@@ -19,6 +19,10 @@ class Brand(models.Model):
     def get_absolute_url(self):
         return reverse("recorders:brand-detail", args=[self.slug])
 
+    @property
+    def display_name(self):
+        return self.name.capitalize()
+
     class Meta:
         verbose_name_plural = "Brands"
         indexes = [models.Index(fields=["name"])]
@@ -35,10 +39,14 @@ class Recorder(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.brand} {self.model}"
+        return f"{self.brand.name} {self.model}"
 
     def get_absolute_url(self):
         return reverse("recorders:recorder-detail", args=[self.brand.slug, self.slug])
+
+    @property
+    def display_name(self):
+        return f"{self.brand.name.capitalize()} {self.model.capitalize()}"
 
     class Meta:
         verbose_name_plural = "Recorders"

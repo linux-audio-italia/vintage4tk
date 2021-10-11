@@ -4,7 +4,7 @@
     <ul class="SiteSidebar-list">
       {% for brand in sidebar.brands %}
         <li class="SiteSidebar-item">
-          <a href="{{ brand.get_absolute_url }}">{{ brand.name|capfirst }}</a>
+          <a href="{{ brand.get_absolute_url }}">{{ brand.display_name }}</a>
         </li>
       {% endfor %}
     </ul>

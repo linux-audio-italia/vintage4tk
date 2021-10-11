@@ -1,9 +1,9 @@
 {% extends "root.html" %}
 
 {% block main %}
-  <h1>Models of {{ brand.name|capfirst }}</h1>
+  <h1>Models of {{ brand.display_name }}</h1>
   <p>
-    Browse the models of {{ brand.name|capfirst }}.
+    Browse the models of {{ brand.display_name }}.
   </p>
   {% include "recorders/includes/recorder_cards.html" with recorders=brand.recorder_set.all %}
 {% endblock main %}

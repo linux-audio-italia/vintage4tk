@@ -35,6 +35,10 @@ class TestCaseBrandModel(TestCase):
         yamaha = Brand.objects.create(name="yamaha")
         self.assertEqual(yamaha.get_absolute_url(), "/yamaha/")
 
+    def test_display_name_of_brand_is_the_capitalized_name(self):
+        yamaha = Brand.objects.create(name="yamaha")
+        self.assertEqual(yamaha.display_name, "Yamaha")
+
 
 class TestCaseRecorderModel(TestCase):
     fixtures = ["brands.json"]
@@ -82,6 +86,11 @@ class TestCaseRecorderModel(TestCase):
         yamaha = Brand.objects.get(name="yamaha")
         mt3x = Recorder.objects.create(model="mt3x", brand=yamaha)
         self.assertEqual(mt3x.get_absolute_url(), "/yamaha/mt3x/")
+
+    def test_display_name_of_recorder_is_the_capitalized_brand_name_and_recorder_model(self):
+        yamaha = Brand.objects.get(name="yamaha")
+        mt3x = Recorder.objects.create(model="mt3x", brand=yamaha)
+        self.assertEqual(mt3x.display_name, "Yamaha Mt3x")
 
 
 class TestCaseRecorderDetailView(TestCase):

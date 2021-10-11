@@ -10,9 +10,15 @@
         height="{{ picture.height }}"
       />
     {% endwith %}
-    <p class="sr-only">Visit {{ recorder.brand }} {{ recorder.model }} detail.</p>
+    <p class="sr-only">Visit {{ recorder.display_name }} detail.</p>
   </a>
   <h3>
-    <a href="{{ recorder.get_absolute_url }}" class="RecorderCard-text_link">{{ recorder.model|capfirst }}</a>
+    <a href="{{ recorder.get_absolute_url }}" class="RecorderCard-text_link">
+      {% if show_brand %}
+        {{ recorder.display_name }}
+      {% else %}
+        {{ recorder.model|capfirst }}
+      {% endif %}
+    </a>
   </h3>
 </li>

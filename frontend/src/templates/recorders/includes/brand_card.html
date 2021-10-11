@@ -10,9 +10,9 @@
         height="{{ picture.height }}"
       />
     {% endwith %}
-    <p class="sr-only">Visit models of the brand {{ brand.name }}</p>
+    <p class="sr-only">Visit models of the brand {{ brand.display_name }}</p>
   </a>
   <h3>
-    <a href="{{ brand.get_absolute_url }}" class="BrandCard-text_link">{{ brand.name|capfirst }}</a>
+    <a href="{{ brand.get_absolute_url }}" class="BrandCard-text_link">{{ brand.display_name }}</a>
   </h3>
 </li>
