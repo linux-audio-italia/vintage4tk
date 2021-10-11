@@ -7,6 +7,7 @@ from django.contrib.sitemaps.views import sitemap
 from django.urls import URLPattern, URLResolver, include, path, re_path
 from django.views.static import serve
 
+from apps.recorders.api.router import router
 from apps.recorders.models import Brand, Recorder
 
 URL = typing.Union[URLPattern, URLResolver]
@@ -24,6 +25,7 @@ SITEMAPS = {
 
 urlpatterns: URLList = [
     path("admin/", admin.site.urls),
+    path("api/", include(router.urls)),
     path("", include("apps.recorders.urls")),
     path("sitemap.xml", sitemap, {"sitemaps": SITEMAPS}, name="django.contrib.sitemaps.views.sitemap"),
 ]

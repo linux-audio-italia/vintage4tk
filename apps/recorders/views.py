@@ -9,7 +9,7 @@ from .models import Brand, Recorder
 class BreadcrumbsMixin(ContextMixin):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["breadcrumbs"] = [("home", reverse_lazy("brand-list"))] + self.get_breadcrumbs()
+        context["breadcrumbs"] = [("home", reverse_lazy("recorders:brand-list"))] + self.get_breadcrumbs()
         return context
 
     def get_breadcrumbs(self):
@@ -49,7 +49,7 @@ class RecorderDetailView(DetailView, BreadcrumbsMixin, SidebarMixin):
     def get_breadcrumbs(self):
         recorder = self.get_object()
         return [
-            (recorder.brand.name, reverse_lazy("brand-detail", args=[recorder.brand.slug])),
+            (recorder.brand.name, reverse_lazy("recorders:brand-detail", args=[recorder.brand.slug])),
             (recorder.model, None),
         ]
 

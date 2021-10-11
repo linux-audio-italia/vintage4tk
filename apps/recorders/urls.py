@@ -2,6 +2,7 @@ from django.urls import path
 
 from .views import BrandDetailView, BrandListView, RecorderDetailView, SearchResultsView
 
+app_name = "recorders"
 urlpatterns = [
     path("search/", SearchResultsView.as_view(), name="search-results"),
     path("<slug:slug>/", BrandDetailView.as_view(), name="brand-detail"),
