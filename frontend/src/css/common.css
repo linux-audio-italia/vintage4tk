@@ -6,6 +6,7 @@
 @import "./includes/footer.css";
 @import "./includes/mainnav.css";
 @import "./includes/breadcrumbs.css";
+@import "./includes/sidebar.css";
 @import "./includes/cards.css";
 
 body {
@@ -25,6 +26,11 @@ a:visited {
 
 h1 {
   font-size: 2rem;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.2rem;
   font-weight: bold;
 }
 

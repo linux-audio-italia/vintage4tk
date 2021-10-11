@@ -1,13 +1,8 @@
-.Breadcrumbs {
-  border-bottom: var(--border-main);
-}
-
 .Breadcrumbs > ol {
   display: flex;
   font-size: 0.9rem;
   list-style: none;
   padding-bottom: var(--air);
-  padding-top: var(--air);
 }
 
 .Breadcrumbs-item {

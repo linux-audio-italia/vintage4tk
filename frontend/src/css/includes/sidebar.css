@@ -1,0 +1,14 @@
+.SiteSidebar {
+  background-color: var(--white-d);
+  margin-right: var(--air);
+  padding: var(--air);
+}
+
+.SiteSidebar-list {
+  list-style: none;
+  margin-top: var(--air);
+}
+
+.SiteSidebar-item + .SiteSidebar-item {
+  margin-top: var(--air-s);
+}

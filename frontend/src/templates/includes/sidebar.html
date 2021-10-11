@@ -1,0 +1,12 @@
+<aside class="SiteSidebar">
+  {% if sidebar.brands %}
+    <h2>All the brands</h2>
+    <ul class="SiteSidebar-list">
+      {% for brand in sidebar.brands %}
+        <li class="SiteSidebar-item">
+          <a href="{{ brand.get_absolute_url }}">{{ brand.name|capfirst }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</aside>

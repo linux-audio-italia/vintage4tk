@@ -12,9 +12,18 @@
   </head>
   <body>
     {% include "includes/header.html" %}
-    <main class="SiteMain">
-      {% block breadcrumbs %}{% endblock breadcrumbs %}
-      <div class="SiteMain-content limit">
+    <main class="SiteMain limit">
+      {% block sidebar %}
+        {% if sidebar %}
+          {% include "includes/sidebar.html" %}
+        {% endif %}
+      {% endblock sidebar %}
+      <div class="SiteMain-content">
+        {% block breadcrumbs %}
+          {% if breadcrumbs %}
+            {% include "includes/breadcrumbs.html" %}
+          {% endif %}
+        {% endblock breadcrumbs %}
         {% block main %}{% endblock main %}
       </div>
     </main>
