@@ -2,24 +2,31 @@
 .RecorderCards {
   display: grid;
   grid-gap: var(--air);
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 180px));
   list-style: none;
   margin-top: var(--air-l);
 }
 
-.BrandCard-link,
-.RecorderCard-link {
+.BrandCard-picture_link,
+.RecorderCard-picture_link {
   align-items: center;
   border: var(--border-main);
-  border-radius: 6px;
+  border-color: var(--white-dd);
   display: flex;
-  height: 60px;
+  height: 180px;
   justify-content: center;
-  padding-left: var(--air);
-  padding-right: var(--air);
+  padding: var(--air);
+  transition: transform 0.1s;
 }
 
-.BrandCard-link:hover,
-.RecorderCard:hover {
-  background-color: var(--papiro);
+.BrandCard-picture_link:hover,
+.RecorderCard-picture_link:hover {
+  border-color: var(--black);
+  transform: translateY(-4px);
+}
+
+.BrandCard-text_link,
+.RecorderCard-text_link {
+  display: inline-block;
+  margin-top: var(--air-s);
 }

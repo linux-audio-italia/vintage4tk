@@ -1,7 +1,7 @@
 {% load thumbnail %}
 
 <li class="BrandCard">
-  <a href="{% url 'brand-detail' brand.slug %}" class="BrandCard-link">
+  <a href="{{ brand.get_absolute_url }}" class="BrandCard-picture_link">
     {% with brand.picture.brand_card as picture %}
       <img
         src="{{ picture.url }}"
@@ -10,6 +10,9 @@
         height="{{ picture.height }}"
       />
     {% endwith %}
-    <span class="sr-only">Visit models of the brand {{ brand.name }}</span>
+    <p class="sr-only">Visit models of the brand {{ brand.name }}</p>
   </a>
+  <h3>
+    <a href="{{ brand.get_absolute_url }}" class="BrandCard-text_link">{{ brand.name|capfirst }}</a>
+  </h3>
 </li>

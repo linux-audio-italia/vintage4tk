@@ -112,8 +112,8 @@ SITE_ID = 1
 
 THUMBNAIL_ALIASES = {
     "": {
-        "brand_card": {"size": (50, 50), "crop": False, "autocrop": True},
-        "recorder_card": {"size": (50, 50), "crop": False, "autocrop": True},
+        "brand_card": {"size": (140, 140), "crop": False, "autocrop": True},
+        "recorder_card": {"size": (140, 140), "crop": False, "autocrop": True},
         "recorder_detail": {"size": (300, 169), "crop": False, "autocrop": True, "upscale": True},
     },
 }
