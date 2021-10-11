@@ -1,0 +1,8 @@
+.Recorder-picture {
+  align-items: center;
+  background-color: var(--black);
+  display: flex;
+  height: 169px;
+  justify-content: center;
+  width: 300px;
+}

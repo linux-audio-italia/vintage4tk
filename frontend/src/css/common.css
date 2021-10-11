@@ -8,6 +8,7 @@
 @import "./includes/breadcrumbs.css";
 @import "./includes/sidebar.css";
 @import "./includes/cards.css";
+@import "./includes/recorder.css";
 
 body {
   background-color: var(--white);

@@ -1,5 +1,18 @@
 {% extends "root.html" %}
 
 {% block main %}
-  <h1>{{ recorder.brand|capfirst }} {{ recorder.model|capfirst }}</h1>
+  <article class="Recorder">
+    <h1>{{ recorder.brand|capfirst }} {{ recorder.model|capfirst }}</h1>
+
+    <div class="Recorder-picture">
+      {% with recorder.picture.recorder_detail as picture %}
+        <img
+          src="{{ picture.url }}"
+          alt="{{ recorder.model }}"
+          width="{{ picture.width }}"
+          height="{{ picture.height }}"
+        />
+      {% endwith %}
+    </div>
+  </article>
 {% endblock main %}
