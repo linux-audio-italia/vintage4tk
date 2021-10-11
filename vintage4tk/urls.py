@@ -25,7 +25,7 @@ SITEMAPS = {
 
 urlpatterns: URLList = [
     path("admin/", admin.site.urls),
-    path("api/", include(router.urls)),
+    path("api/", include((router.urls, "api"))),
     path("", include("apps.recorders.urls")),
     path("sitemap.xml", sitemap, {"sitemaps": SITEMAPS}, name="django.contrib.sitemaps.views.sitemap"),
 ]
