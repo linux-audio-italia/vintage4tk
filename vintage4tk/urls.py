@@ -6,6 +6,7 @@ from django.contrib.sitemaps import GenericSitemap
 from django.contrib.sitemaps.views import sitemap
 from django.urls import URLPattern, URLResolver, include, path, re_path
 from django.views.static import serve
+from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView
 
 from apps.recorders.api.router import router
 from apps.recorders.models import Brand, Recorder
@@ -25,6 +26,8 @@ SITEMAPS = {
 
 urlpatterns: URLList = [
     path("admin/", admin.site.urls),
+    path("_schema/", SpectacularAPIView.as_view(), name="schema"),
+    path("_docs/", SpectacularRedocView.as_view(url_name="schema"), name="docs"),
     path("api/", include((router.urls, "api"))),
     path("", include("apps.recorders.urls")),
     path("sitemap.xml", sitemap, {"sitemaps": SITEMAPS}, name="django.contrib.sitemaps.views.sitemap"),

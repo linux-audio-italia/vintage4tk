@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     "django.contrib.sitemaps",
     "easy_thumbnails",
     "rest_framework",
+    "drf_spectacular",
     "apps.accounts",
     "apps.recorders",
 ]
@@ -119,4 +120,15 @@ THUMBNAIL_ALIASES = {
     },
 }
 
-REST_FRAMEWORK = {"DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly"]}
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [],
+    "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.AllowAny"],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Vintage4tk API",
+    "DESCRIPTION": "A collection of Vintage 4 tracks cassette recorders.",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+}
