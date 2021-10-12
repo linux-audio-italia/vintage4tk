@@ -5,8 +5,8 @@ from easy_thumbnails.fields import ThumbnailerImageField
 
 
 class Brand(models.Model):
-    name = models.CharField(max_length=100, unique=True, default="")
-    slug = AutoSlugField(populate_from="name", unique=True, default="")
+    name = models.CharField(max_length=100, unique=True)
+    slug = AutoSlugField(populate_from="name", unique=True, blank=True)
     picture = ThumbnailerImageField(
         upload_to="brands", default="brands/brand_placeholder.gif", null=False, blank=False
     )
