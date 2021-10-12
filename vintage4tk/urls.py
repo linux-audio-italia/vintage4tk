@@ -26,8 +26,8 @@ SITEMAPS = {
 
 urlpatterns: URLList = [
     path("admin/", admin.site.urls),
-    path("_schema/", SpectacularAPIView.as_view(), name="schema"),
-    path("_docs/", SpectacularRedocView.as_view(url_name="schema"), name="docs"),
+    path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
+    path("api/docs/", SpectacularRedocView.as_view(url_name="schema"), name="docs"),
     path("api/", include((router.urls, "api"))),
     path("", include("apps.recorders.urls")),
     path("sitemap.xml", sitemap, {"sitemaps": SITEMAPS}, name="django.contrib.sitemaps.views.sitemap"),
