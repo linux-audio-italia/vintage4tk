@@ -201,6 +201,10 @@ class TestCaseRecordersSearch(TestCase):
         self.assertNotContains(response, 'href="/fostex/x-28/"')
         self.assertNotContains(response, "Sorry, no recorders match your search.")
 
+    def test_search_result_card_contains_brand_name(self):
+        response = self.client.get(reverse("recorders:search-results"), {"q": "fos"})
+        self.assertTrue(response.context["results"][0].display_name.startswith("Fostex "))
+
 
 class TestCaseURLS(TestCase):
     fixtures = ["brands.json", "recorders.json"]

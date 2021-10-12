@@ -1,5 +1,6 @@
 appdirs==1.4.4
 asgiref==3.4.1
+attrs==21.2.0
 autopep8==1.5.7
 backcall==0.2.0
 backports.entry-points-selectable==1.1.0
@@ -17,13 +18,16 @@ django-stubs==1.9.0
 django-stubs-ext==0.3.1
 djangorestframework==3.12.4
 djlint==0.4.9
+drf-spectacular==0.20.1
 easy-thumbnails==2.7.1
 filelock==3.2.0
 flake8==3.9.2
+inflection==0.5.1
 ipython==7.26.0
 ipython-genutils==0.2.0
 isort==5.9.3
 jedi==0.18.0
+jsonschema==4.1.0
 Markdown==3.3.4
 matplotlib-inline==0.1.2
 mccabe==0.6.1
@@ -49,6 +53,7 @@ Pygments==2.10.0
 pymemcache==3.5.0
 pyparsing==2.4.7
 pyright==0.0.8
+pyrsistent==0.18.0
 python-magic==0.4.24
 pytz==2021.1
 PyYAML==5.4.1
@@ -70,5 +75,6 @@ traitlets==5.0.5
 types-pytz==2021.1.2
 types-PyYAML==5.4.10
 typing-extensions==3.10.0.0
+uritemplate==4.0.0
 virtualenv==20.8.1
 wcwidth==0.2.5
