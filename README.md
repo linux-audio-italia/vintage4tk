@@ -48,3 +48,7 @@ Visit the website at http://127.0.0.1:8000
 and the admin interface at http://127.0.0.1:8000/admin
 
 The admin username and password are **admin** / **adminadmin**.
+
+## Optimize images
+
+Put source images (not SVG!) in `frontend/src/images/` and run `npm run images` to optimize them and put them into Django static files folder.
