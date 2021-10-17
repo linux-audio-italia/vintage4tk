@@ -2,42 +2,36 @@ name: Vintage 4tk recorders CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Start PostgreSQL
-      run: |
-        sudo systemctl start postgresql.service
-        pg_isready
-    - name: Create PostgreSQL user and database
-      run: |
-        sudo -u postgres psql --command="CREATE USER gh PASSWORD 'gh' CREATEDB;"
-        sudo -u postgres createdb --owner=gh gh
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v2
-      with:
-        postgresql user: postgres
-        postgresql password: postgres
-        postgresql db: postgres_test
-        python-version: 3.9
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        npm install
-    - name: Optimize images
-      run: npm run images
-    - name: Lint
-      run: npm run lint
-    - name: Coverage report
-      env:
-        DJANGO_SETTINGS_MODULE: vintage4tk.settings.ci
-      run: |
-        coverage run manage.py test
-        coverage report
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Start PostgreSQL
+        run: |
+          sudo systemctl start postgresql.service
+          pg_isready
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          npm install
+      - name: Build frontend
+        run: npm run build
+      - name: Lint
+        run: npm run lint
+      - name: Coverage report
+        env:
+          DJANGO_SETTINGS_MODULE: vintage4tk.settings.ci
+        run: |
+          coverage run manage.py test
+          coverage report
