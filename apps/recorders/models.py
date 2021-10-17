@@ -26,6 +26,7 @@ class Brand(models.Model):
     class Meta:
         verbose_name_plural = "Brands"
         indexes = [models.Index(fields=["name"])]
+        ordering = ["name"]
 
 
 class Recorder(models.Model):
@@ -52,3 +53,4 @@ class Recorder(models.Model):
         verbose_name_plural = "Recorders"
         indexes = [models.Index(fields=["model"])]
         unique_together = ["model", "brand"]
+        ordering = ["brand__name", "model"]
