@@ -41,7 +41,7 @@ $ python manage.py loaddata users brands recorders
 5. Build the frontend static files
 
 ```
-npm run build
+$ npm run build
 ```
 
 6. Run the development server and css compilation
